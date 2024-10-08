@@ -1,0 +1,2 @@
+const e=document.querySelector(".breed-select");e.addEventListener("change",(function(){arr,fetch("https://api.thecatapi.com/v1/breeds?x-api-key=live_EJrN7e2BWq8nuTG6cxjyRu8hHhViUZv3d3f01D7MOLowcl2vTNvfHudaMaMhvVR8").then((e=>{if(!e.ok)throw new Error(e.status);return e.json()})).then((e=>e.map((e=>console.log(e))))).catch(),e.value=arr.id,console.log(arr)}));
+//# sourceMappingURL=index.9d20410a.js.map
