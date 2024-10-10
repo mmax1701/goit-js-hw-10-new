@@ -29,20 +29,18 @@ fetchBreeds().then(data => data.map(elem => select.insertAdjacentHTML('beforeend
 
 function fetchCatByBreed(breedId) {
     console.log(breedId);
-    fetch(`${URL}/images/search?breed_ids=${breedId}`)
+   return fetch(`${URL}/breeds/${breedId}?x-api-key=${KEY}`)
         .then(resp => {
+            console.log(resp);
             if (!resp.ok) {
             throw new Error(resp.statusText)
             }
             return resp.json();
         }
     )
-    //     .then(data => data.map(elem => (info.innerHTML =`<img src="${elem.url}" alt="#" width="300px">
-    // <h1></h1>
-    // <p></p>
-    // <p>Temperament:</p>`)))
-    //     .catch(err => console.log(err))
-
-    .then(data => console.log(data))
+        .then(elem => info.innerHTML =`<img src="https://cdn2.thecatapi.com/images/${elem.reference_image_id}.jpg" alt="${elem.name}" width="300px">
+    <h1>${elem.name}</h1>
+    <p>${elem.description}</p>
+    <p>Temperament: ${elem.temperament}</p>`)
         .catch(err => console.log(err))
 }
